@@ -1,0 +1,6 @@
+.items-container {
+  display: flex;
+  align-items: center;
+  margin: 24px -16px -32px;
+  flex-wrap: wrap;
+}

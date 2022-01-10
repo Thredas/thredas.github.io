@@ -1,0 +1,61 @@
+.entity-card {
+  /*padding: 18px;*/
+  width: 265px;
+  /*border: #e6e6e6 2px solid;*/
+  border-radius: 16px;
+  margin-right: 16px;
+  margin-left: 16px;
+  margin-bottom: 48px;
+  transition: 0.1s ease;
+  cursor: pointer;
+}
+
+.entity-card-image-container {
+  padding: 16px;
+  background-color: rgba(0,0,0,0.05);
+  border: transparent 2px solid;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.1s ease;
+}
+
+.entity-card-image {
+  width: 100px;
+  fill: #474747;
+  transition: 0.1s ease;
+}
+
+/*.entity-card:hover {*/
+/*  transform: scale(1.05);*/
+/*}*/
+
+.entity-card:hover .entity-card-image {
+  fill: #61a4ec;
+}
+
+.entity-card:hover .entity-card-image-container {
+  border: #61a4ec 2px solid;
+}
+
+.entity-card-name {
+  display: block;
+  margin-top: 16px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #474747;
+  transition: 0.1s ease;
+}
+
+.entity-card:hover .entity-card-name {
+  color: #498eec;
+}
+
+.entity-card-type {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0d6efd;
+}

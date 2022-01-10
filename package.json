@@ -1,13 +1,15 @@
 {
-  "name": "personal-ptojects-platform",
+  "name": "personal-projects-platform",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
+    "bootstrap": "^5.1.3",
     "react": "^17.0.2",
+    "react-bootstrap": "^2.1.0",
+    "react-bootstrap-icons": "^1.7.2",
     "react-dom": "^17.0.2",
+    "react-router": "latest",
+    "react-router-dom": "^6.1.1",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.0.1"
   },
