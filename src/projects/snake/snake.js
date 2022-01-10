@@ -128,6 +128,7 @@ const Snake = () => {
         />
       ), [tail])}
 
+
       <div
         className="apple"
         style={{ left: applePosition.x, top: applePosition.y }}
