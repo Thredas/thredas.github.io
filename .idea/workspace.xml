@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3fecc87e-a81a-47cf-b92b-b3b322c01653" name="Default Changelist" comment="-Initial Commit">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+    <list default="true" id="3fecc87e-a81a-47cf-b92b-b3b322c01653" name="Default Changelist" comment="-Build 0.1 for Pages">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/BackButton/BackButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BackButton/BackButton.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,6 +24,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="build-branch" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PackageJsonUpdateNotifier">
@@ -100,7 +105,9 @@
       <workItem from="1641390212566" duration="25409000" />
       <workItem from="1641576835406" duration="7950000" />
       <workItem from="1641626368804" duration="6877000" />
-      <workItem from="1641838763143" duration="7267000" />
+      <workItem from="1641838763143" duration="7777000" />
+      <workItem from="1641905805672" duration="840000" />
+      <workItem from="1641906713202" duration="4257000" />
     </task>
     <task id="LOCAL-00001" summary="-Initial Commit">
       <created>1641849006604</created>
@@ -109,11 +116,45 @@
       <option name="project" value="LOCAL" />
       <updated>1641849006604</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="-Initial Commit">
+      <created>1641849620607</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1641849620607</updated>
+    </task>
+    <task id="LOCAL-00003" summary="-Initial Commit">
+      <created>1641849738327</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1641849738327</updated>
+    </task>
+    <task id="LOCAL-00004" summary="-Build 0.1 for Pages">
+      <created>1641906315029</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1641906315029</updated>
+    </task>
+    <task id="LOCAL-00005" summary="-Build 0.1 for Pages">
+      <created>1641906504295</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1641906504295</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/node_modules/babel-preset-react-app/node_modules/@babel/core/src/transform-file.js" />
+        <option value="$PROJECT_DIR$/node_modules/babel-preset-react-app/node_modules/@babel/core/src/transform-file-browser.js" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -131,6 +172,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="-Initial Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="-Initial Commit" />
+    <MESSAGE value="-Build 0.1 for Pages" />
+    <option name="LAST_COMMIT_MESSAGE" value="-Build 0.1 for Pages" />
   </component>
 </project>
