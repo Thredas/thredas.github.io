@@ -7,6 +7,18 @@
   overflow: hidden;
 }
 
+.snake-field-mobile {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /*border: 2px #b4b4b4 solid;*/
+  border-radius: 16px;
+  background-color: #e9eeec;
+  overflow: hidden;
+}
+
 .player {
   position: absolute;
   width: 24px;
@@ -64,4 +76,31 @@
   z-index: 10;
   color: #414542;
   background-color: rgba(248, 248, 248, 0.5);
+}
+
+.mobile-switch {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  padding: 4px 8px;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #424242;
+  border: 0;
+  border-radius: 4px;
+}
+
+.mobile-buttons {
+  z-index: 10;
+  position: fixed;
+  bottom: 32px;
+  width: 100%;
+}
+
+.mobile-button {
+  display: block;
+  padding: 8px 16px;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #424242;
+  border: 0;
+  border-radius: 4px;
 }
