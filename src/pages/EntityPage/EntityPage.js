@@ -17,7 +17,7 @@ const EntityPage = () => {
       <h3>{entity.name}</h3>
       <p className='text-secondary'>{entity.description}</p>
 
-      <div className="content mt-5">
+      <div className="content mt-4">
         {entity.content}
       </div>
     </div>

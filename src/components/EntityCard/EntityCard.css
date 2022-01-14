@@ -10,6 +10,12 @@
   cursor: pointer;
 }
 
+@media screen and (max-width: 420px){
+  .entity-card {
+    width: 100%;
+  }
+}
+
 .entity-card-image-container {
   padding: 16px;
   background-color: rgba(0,0,0,0.05);

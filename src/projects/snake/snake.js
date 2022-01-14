@@ -1,13 +1,21 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import './snake.css'
 
-import {ArrowDown, ArrowLeft, ArrowRight, ArrowUp, PauseFill, Phone} from 'react-bootstrap-icons';
+import {
+  CaretDownFill,
+  CaretLeftFill,
+  CaretRightFill,
+  CaretUpFill,
+  PauseFill,
+  Phone, PhoneFill
+} from 'react-bootstrap-icons';
 
 const Snake = () => {
   const gameCycle = useRef(null);
-  const FRAMES = 24;
+
+  const FPS = 30;
   const SECOND = 1000;
-  const FRAME_TIME = SECOND / FRAMES;
+  const FRAME_TIME = SECOND / FPS;
 
   const [direction, setDirection] = useState(0);
   const [playerPosition, setPlayerPosition] = useState({x: 16, y: 16});
@@ -15,6 +23,7 @@ const Snake = () => {
   const [tail, setTail] = useState([]);
   const [speed, setSpeed] = useState(100);
   const [score, setScore] = useState(0);
+  const [highestScore, setHighestScore] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
 
   const fieldRef = useRef(null);
@@ -42,6 +51,10 @@ const Snake = () => {
 
   useEffect(() => {
     window.addEventListener('keydown', keyListener);
+
+    const highestScore = parseInt(localStorage.getItem('highestScore'));
+    setHighestScore(highestScore ? highestScore : null);
+
     return () => {
       window.removeEventListener('keydown', keyListener);
       clearTimeout(gameCycle.current);
@@ -54,52 +67,55 @@ const Snake = () => {
 
     setApplePosition({x: appleX, y: appleY});
     setScore((score) => score + 1);
-    setSpeed((speed) => speed + 5);
-
-    setTail([playerPosition, ...tail])
+    setSpeed((speed) => speed + 1);
   };
 
   const resetGame = () => {
-    setDirection(0);
+    if (score > highestScore) {
+      localStorage.setItem('highestScore', score.toString());
+      setHighestScore(score);
+    }
+
+    setDirection(null);
     setScore(0);
     setSpeed(100);
     setTail([]);
   };
 
-  let x = playerPosition.x;
-  let y = playerPosition.y;
-
+  // game cycle and frames update logic
   clearTimeout(gameCycle.current);
   gameCycle.current = direction && setTimeout(() => {
+    let x = playerPosition.x;
+    let y = playerPosition.y;
+
+    // movement
+    x = direction === 1 ? x + (speed / FPS) : direction === 180 ? x - (speed / FPS) : x;
+    y = direction === 270 ? y - (speed / FPS) : direction === 90 ? y + (speed / FPS) : y;
 
     // boundaries collision
-    if (y >= fieldRef.current.clientHeight - 30) y = 5;
-    else if (y <= 5) y = fieldRef.current.clientHeight - 30;
-    else if (x <= 5) x = fieldRef.current.clientWidth - 30;
-    else if (x >= fieldRef.current.clientWidth - 30) x = 5;
+    if (y >= fieldRef.current.clientHeight - 15) y = 0;
+    else if (y <= 0) y = fieldRef.current.clientHeight - 25;
+    else if (x <= 0) x = fieldRef.current.clientWidth - 25;
+    else if (x >= fieldRef.current.clientWidth - 15) x = 0;
 
     // apple collision and tail movement
     if (x - 10 < applePosition.x && applePosition.x < x + 30 &&
-      y - 10 < applePosition.y && applePosition.y < y + 24) {
+      y - 20 < applePosition.y && applePosition.y < y + 20) {
       doCollisionWithApple();
+      setTail([{x, y}, ...tail]);
     } else if (tail.length > 0) {
       tail.pop();
-      setTail([playerPosition, ...tail]);
+      setTail([{x, y}, ...tail]);
     }
 
+    // tail collision
     if (tail.length > 0) {
-      const tailCollision = tail.find((tailPart) => {
-        return x - 10 < tailPart.x && tailPart.x < x + 30 && y - 10 < tailPart.y && tail.y < y + 24
+      const tailCollision = tail.find((tailPart, idx) => {
+        return idx > 8 && x - 5 < tailPart.x && tailPart.x < x + 20 && y - 10 < tailPart.y && tailPart.y < y + 10
       });
 
       if (tailCollision) resetGame();
     }
-
-    x = direction === 1 ? x + (speed / FRAMES) :
-      direction === 180 ? x - (speed / FRAMES) : x;
-
-    y = direction === 270 ? y - (speed / FRAMES) :
-      direction === 90 ? y + (speed / FRAMES) : y;
 
     setPlayerPosition({x, y})
   }, FRAME_TIME);
@@ -134,66 +150,57 @@ const Snake = () => {
 
       <div className="score">
         <span>{score}</span>
+        {!!highestScore && <span className="highest">HIGHEST: {highestScore}</span>}
       </div>
 
       {!direction && <div className="tutorial">
-        <button className='mobile-switch' onClick={() => setIsMobile(!isMobile)}>
-          <Phone />
-        </button>
-
-        <div className="text-center">
+        {!isMobile && <div className="text-center">
           <b className="fs-5">Controls</b>
           <p className="mb-4">Arrow keys</p>
 
           <b className="fs-5">Pause</b>
           <p>Any other key</p>
-        </div>
+        </div>}
 
-        <p className="text-center">
+        <b className="text-center">
           Press any arrow key to start the game
-        </p>
+        </b>
+        
+        {isMobile && <div />}
       </div>}
 
-      {isMobile && direction &&
-        <button className='mobile-switch' onClick={() => setDirection(0)}>
-          <PauseFill />
-        </button>
-      }
+      {!direction && <button className='mobile-switch' onClick={() => setIsMobile(!isMobile)}>
+        {isMobile ? <PhoneFill className="fs-5" /> : <Phone className="fs-5" />}
+        {!isMobile ? <span className="ms-2">Mobile mode</span> : null}
+      </button>}
 
       {isMobile && <div className="mobile-buttons">
-        <div className="d-flex justify-content-center mb-3">
-          <button
-            className='mobile-button button-top'
-            onClick={() => setDirection((direction) => direction !== 90 ? 270 : direction)}
-          >
-            <ArrowUp />
-          </button>
-        </div>
+        <button
+          className='mobile-button button-top'
+          onClick={() => setDirection((direction) => direction !== 90 ? 270 : direction)}
+        ><CaretUpFill className='fs-1' /></button>
 
-        <div className="d-flex justify-content-center">
+        <div className="d-flex w-100 flex-1 flex-fill">
           <button
-            className='mobile-button button-left me-5'
+            className='mobile-button button-left'
             onClick={() => setDirection((direction) => direction !== 1 ? 180 : direction)}
-          >
-            <ArrowLeft />
-          </button>
+          ><CaretLeftFill className='fs-1' /></button>
 
           <button
-            className='mobile-button button-right ms-5'
+            className='mobile-button '
+            onClick={() => setDirection(null)}
+          ><PauseFill className='fs-1' /></button>
+
+          <button
+            className='mobile-button button-right'
             onClick={() => setDirection((direction) => direction !== 180 ? 1 : direction)}
-          >
-            <ArrowRight />
-          </button>
+          ><CaretRightFill className='fs-1' /></button>
         </div>
 
-        <div className="d-flex justify-content-center mt-3">
-          <button
-            className='mobile-button button-bottom'
-            onClick={() => setDirection((direction) => direction !== 270 ? 90 : direction)}
-          >
-            <ArrowDown />
-          </button>
-        </div>
+        <button
+          className='mobile-button button-bottom'
+          onClick={() => setDirection((direction) => direction !== 270 ? 90 : direction)}
+        ><CaretDownFill className='fs-1' /></button>
       </div>}
     </div>
   );
