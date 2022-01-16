@@ -4,5 +4,21 @@
 }
 
 .content {
-  height: calc(100% - 128px);
+  height: 100%;
+}
+
+.nav-link {
+  border-radius: 24px !important;
+  margin-right: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #474747;
+}
+
+.nav-link.active {
+  background-color: #61a4ec !important;
+}
+
+.tab-content {
+  height: calc(100% - 186px);
 }

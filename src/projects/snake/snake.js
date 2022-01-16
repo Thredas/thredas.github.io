@@ -9,7 +9,7 @@ import {
   PauseFill,
   Phone, PhoneFill, PlayFill
 } from 'react-bootstrap-icons';
-import {RegularText, SecondaryText} from "../../components/Text/Text";
+import { RegularText, SecondaryText } from "../../components/Text/Text";
 
 const Snake = () => {
   const gameCycle = useRef(null);
