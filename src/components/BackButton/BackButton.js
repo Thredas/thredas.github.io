@@ -16,7 +16,7 @@ const BackButton = ({ text }) => {
       onClick={() => navigate(-1)}
     >
       <ArrowLeftShort />
-      <span className="ms-1">{text}</span>
+      <span className="ms-1" style={{ fontWeight: 500 }}>{text}</span>
     </Button>
   );
 };

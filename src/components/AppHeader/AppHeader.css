@@ -1,3 +1,9 @@
 .app-header {
   padding: 16px 0;
+  width: 100%;
+}
+
+.header-link {
+  font-size: 24px;
+  color: #474747;
 }

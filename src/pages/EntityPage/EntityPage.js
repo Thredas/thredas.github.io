@@ -5,6 +5,7 @@ import BackButton from "../../components/BackButton/BackButton";
 
 import { useParams } from 'react-router-dom';
 import index from "../../projects";
+import {HeaderText, SecondaryText} from "../../components/Text/Text";
 
 const EntityPage = () => {
   const { entityId } = useParams();
@@ -14,8 +15,8 @@ const EntityPage = () => {
     <div className="entity-page">
       <BackButton text="To projects" />
 
-      <h3>{entity.name}</h3>
-      <p className='text-secondary'>{entity.description}</p>
+      <HeaderText className="fs-3">{entity.name}</HeaderText>
+      <SecondaryText>{entity.description}</SecondaryText>
 
       <div className="content mt-4">
         {entity.content}

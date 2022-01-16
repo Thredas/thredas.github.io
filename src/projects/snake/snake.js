@@ -7,8 +7,9 @@ import {
   CaretRightFill,
   CaretUpFill,
   PauseFill,
-  Phone, PhoneFill
+  Phone, PhoneFill, PlayFill
 } from 'react-bootstrap-icons';
+import {RegularText, SecondaryText} from "../../components/Text/Text";
 
 const Snake = () => {
   const gameCycle = useRef(null);
@@ -99,8 +100,8 @@ const Snake = () => {
     else if (x >= fieldRef.current.clientWidth - 15) x = 0;
 
     // apple collision and tail movement
-    if (x - 10 < applePosition.x && applePosition.x < x + 30 &&
-      y - 20 < applePosition.y && applePosition.y < y + 20) {
+    if (x < applePosition.x && applePosition.x < x + 32 &&
+      y < applePosition.y && applePosition.y < y + 24) {
       doCollisionWithApple();
       setTail([{x, y}, ...tail]);
     } else if (tail.length > 0) {
@@ -111,7 +112,7 @@ const Snake = () => {
     // tail collision
     if (tail.length > 0) {
       const tailCollision = tail.find((tailPart, idx) => {
-        return idx > 8 && x - 5 < tailPart.x && tailPart.x < x + 20 && y - 10 < tailPart.y && tailPart.y < y + 10
+        return idx > 8 && x < tailPart.x && tailPart.x < x + 32 && y < tailPart.y && tailPart.y < y + 24
       });
 
       if (tailCollision) resetGame();
@@ -155,16 +156,16 @@ const Snake = () => {
 
       {!direction && <div className="tutorial">
         {!isMobile && <div className="text-center">
-          <b className="fs-5">Controls</b>
-          <p className="mb-4">Arrow keys</p>
+          <SecondaryText>Controls</SecondaryText>
+          <RegularText className="mb-4">Arrow keys</RegularText>
 
-          <b className="fs-5">Pause</b>
-          <p>Any other key</p>
+          <SecondaryText>Pause</SecondaryText>
+          <RegularText>Any other key</RegularText>
         </div>}
 
-        <b className="text-center">
+        <SecondaryText className="text-center">
           Press any arrow key to start the game
-        </b>
+        </SecondaryText>
         
         {isMobile && <div />}
       </div>}
@@ -188,8 +189,8 @@ const Snake = () => {
 
           <button
             className='mobile-button '
-            onClick={() => setDirection(null)}
-          ><PauseFill className='fs-1' /></button>
+            onClick={() => setDirection(direction ? null : 1)}
+          >{direction ? <PauseFill className='fs-1' /> : <PlayFill className='fs-1'/>}</button>
 
           <button
             className='mobile-button button-right'
