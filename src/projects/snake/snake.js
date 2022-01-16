@@ -100,8 +100,8 @@ const Snake = () => {
     else if (x >= fieldRef.current.clientWidth - 15) x = 0;
 
     // apple collision and tail movement
-    if (x < applePosition.x && applePosition.x < x + 32 &&
-      y < applePosition.y && applePosition.y < y + 24) {
+    if (x - 10 < applePosition.x && applePosition.x < x + 30 &&
+      y - 20 < applePosition.y && applePosition.y < y + 20) {
       doCollisionWithApple();
       setTail([{x, y}, ...tail]);
     } else if (tail.length > 0) {
@@ -112,7 +112,7 @@ const Snake = () => {
     // tail collision
     if (tail.length > 0) {
       const tailCollision = tail.find((tailPart, idx) => {
-        return idx > 8 && x < tailPart.x && tailPart.x < x + 32 && y < tailPart.y && tailPart.y < y + 24
+        return idx > 8 && x - 5 < tailPart.x && tailPart.x < x + 20 && y - 10 < tailPart.y && tailPart.y < y + 10
       });
 
       if (tailCollision) resetGame();
