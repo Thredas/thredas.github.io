@@ -90,8 +90,10 @@ const Snake = () => {
     let y = playerPosition.y;
 
     // movement
-    x = direction === 1 ? x + (speed / FPS) : direction === 180 ? x - (speed / FPS) : x;
-    y = direction === 270 ? y - (speed / FPS) : direction === 90 ? y + (speed / FPS) : y;
+    if (direction === 1) x += (speed / FPS);
+    else if (direction === 180) x -= (speed / FPS);
+    else if (direction === 90) y += (speed / FPS);
+    else if (direction === 270) y -= (speed / FPS);
 
     // boundaries collision
     if (y >= fieldRef.current.clientHeight - 15) y = 0;
@@ -112,7 +114,11 @@ const Snake = () => {
     // tail collision
     if (tail.length > 0) {
       const tailCollision = tail.find((tailPart, idx) => {
-        return idx > 8 && x - 5 < tailPart.x && tailPart.x < x + 20 && y - 10 < tailPart.y && tailPart.y < y + 10
+        return (
+          idx > 8 &&
+          x - 5 < tailPart.x && tailPart.x < x + 20 &&
+          y - 10 < tailPart.y && tailPart.y < y + 10
+        )
       });
 
       if (tailCollision) resetGame();
