@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import routes from '../../routes'
+import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 
 const Router = () => {
   return (
@@ -14,6 +15,8 @@ const Router = () => {
             exact
           />);
       })}
+
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 };
