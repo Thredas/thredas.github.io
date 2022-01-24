@@ -1,16 +1,16 @@
 .button {
   display: flex;
   align-items: center;
-  padding: 6px 16px;
+  padding: 8px 24px;
   background-color: rgba(73, 142, 236, 0.15);
   color: rgb(73, 142, 236);
   font-size: 15px;
-  font-weight: 600;
-  border-radius: 6px;
+  font-weight: 700;
+  border-radius: 8px;
   transition: 0.1s ease;
 }
 
 .button:hover {
   color: rgb(58, 112, 187);
-  transform: scale(0.9);
+  transform: scale(0.95);
 }

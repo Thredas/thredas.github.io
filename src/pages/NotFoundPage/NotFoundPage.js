@@ -2,7 +2,7 @@ import React from 'react';
 import './NotFoundPage.css';
 import { HeaderText, RegularText, SecondaryText } from "../../components/Text/Text";
 import { Link } from "react-router-dom";
-import { HouseDoorFill } from "react-bootstrap-icons";
+import { ArrowLeft } from "react-bootstrap-icons";
 
 const NotFoundPage = () => {
   return (
@@ -12,7 +12,7 @@ const NotFoundPage = () => {
       <SecondaryText>Try to correct page address</SecondaryText>
 
       <Link className="button mt-5" to="/">
-        <HouseDoorFill className="fs-6 me-2" />
+        <ArrowLeft className="fs-6 me-2" />
         Return to main page
       </Link>
     </div>
